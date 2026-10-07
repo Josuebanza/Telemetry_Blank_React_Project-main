@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MetricCard from "./components/MetricCard";
 import Gauge from "./components/Gauge";
+import TelemetryChart from "./components/TelemetryChart";
 
 function App() {
   const [data, setData] = useState(null);
@@ -39,15 +40,16 @@ function App() {
           value={data.summary.max_speed_kmh.toFixed(1)}
           unit="km/h"
         />
+      </div>
 
-        <div className="gauges">
-          <Gauge
-            title="Max Speed"
-            value={data.summary.max_speed_kmh}
-            max={60}
-            unit="km/h"
-          />
-        </div>
+      <div className="gauges">
+        <Gauge
+          title="Max Speed"
+          value={data.summary.max_speed_kmh}
+          max={60}
+          unit="km/h"
+        />
+
         <Gauge
           title="Max Throttle"
           value={data.summary.max_throttle_pct}
@@ -62,6 +64,35 @@ function App() {
           unit="W"
         />
       </div>
+      <section className="charts">
+        <TelemetryChart
+          title="Speed over time"
+          data={data.telemetry}
+          dataKey="speed_kmh"
+          unit="km/h"
+        />
+
+        <TelemetryChart
+          title="Power over time"
+          data={data.telemetry} 
+          dataKey="power_w"
+          unit="W"
+        />
+
+        <TelemetryChart
+          title="Acceleration over time"
+          data={data.telemetry}
+          dataKey="acceleration_mps2"
+          unit="m/s²"
+        />
+
+        <TelemetryChart
+          title="Cumulative energy" 
+          data={data.telemetry}
+          dataKey="energy_wh"
+          unit="Wh" 
+        />
+      </section>
     </main>
   );
 }

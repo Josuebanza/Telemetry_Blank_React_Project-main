@@ -41,3 +41,22 @@
   font-size: 1.6rem;
   font-weight: bold;
 }
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.chart-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 0;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
