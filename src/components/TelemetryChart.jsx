@@ -1,4 +1,3 @@
-
 import {
   LineChart,
   Line,
@@ -6,7 +5,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from "recharts";
 
 function TelemetryChart({ title, data, dataKey, unit }) {

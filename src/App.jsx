@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MetricCard from "./components/MetricCard";
 import Gauge from "./components/Gauge";
 import TelemetryChart from "./components/TelemetryChart";
+import ScatterPlot from "./components/ScatterPlot";
 
 function App() {
   const [data, setData] = useState(null);
@@ -73,10 +74,10 @@ function App() {
         />
 
         <TelemetryChart
-          title="Power over time"
-          data={data.telemetry} 
-          dataKey="power_w"
-          unit="W"
+          title="Throttle over time"
+          data={data.telemetry}
+          dataKey="throttle_pct"
+          unit="%"
         />
 
         <TelemetryChart
@@ -87,10 +88,21 @@ function App() {
         />
 
         <TelemetryChart
-          title="Cumulative energy" 
+          title="Cumulative energy"
           data={data.telemetry}
           dataKey="energy_wh"
-          unit="Wh" 
+          unit="Wh"
+        />
+
+        <ScatterPlot
+          title="Throttle vs Acceleration"
+          data={data.telemetry}
+          xKey="throttle_pct"
+          yKey="acceleration_mps2"
+          xLabel="Throttle"
+          yLabel="Acceleration"
+          xUnit="%"
+          yUnit="m/s²"
         />
       </section>
     </main>
